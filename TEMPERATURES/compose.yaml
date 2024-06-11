@@ -1,0 +1,16 @@
+version: '3.1'
+services:
+  frontend:
+    container_name: temperatures-front
+    image: iesgn/temperaturas_frontend
+    restart: always
+    ports:
+      - 8081:3000
+    environment:
+      - TEMP_SERVER=temperatures-back:5000
+    depends_on:
+      - backend
+  backend:
+    container_name: temperatures-back
+    image: iesgn/temperaturas_backend
+    restart: always

@@ -1,12 +1,17 @@
 # Testing docker compose
 
-This repository is a test environment in the creation of a yaml file to raise two containers.
+This repository is a test environment in the creation of a yaml files to raise containers.
 
 ## Deployment
 
 + Creation of the yaml file
-+ Run services
++ Run services in the same folder
++ Stop services and remove containers
 
 ```bash
 docker compose up -d
+```
+
+```bash
+docker compose up -d [-v]
 ```
