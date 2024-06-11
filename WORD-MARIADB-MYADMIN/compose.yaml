@@ -2,36 +2,36 @@ version: '3.1'
 services:
   wordpress:
     container_name: wp_server
-    image: wordpress
+    image: wordpress:${WP_VERSION}
     restart: always
     environment:
       WORDPRESS_DB_HOST: db
-      WORDPRESS_DB_USER: user
-      WORDPRESS_DB_PASSWORD: monomono
-      WORDPRESS_DB_NAME: wp_db
+      WORDPRESS_DB_USER: ${USER}
+      WORDPRESS_DB_PASSWORD: ${PASSWORD}
+      WORDPRESS_DB_NAME: ${DATABASE_NAME}
     ports:
-      - 80:80
+      - ${DDBB_PORT}:80
     volumes:
       - ./wordpress:/var/www/html
   db:
     container_name: mysql_server
-    image: mariadb
+    image: mariadb:${MARIADB_VERSION}
     restart: always
     environment:
-      MARIADB_DATABASE: wp_db
-      MARIADB_USER: user
-      MARIADB_PASSWORD: monomono
-      MARIADB_ROOT_PASSWORD: monomono
+      MARIADB_DATABASE: ${DATABASE_NAME}
+      MARIADB_USER: ${USER}
+      MARIADB_PASSWORD: ${PASSWORD}
+      MARIADB_ROOT_PASSWORD: ${ROOT_PASSWORD}
     volumes:
       - ./mysql:/var/lib/mysql
   phpmyadmin:
     container_name: phpmyadmin_server
-    image: phpmyadmin
+    image: phpmyadmin:${PHPMYADMIN_VERSION}
     restart: always
     environment:
       PMA_HOST: db
-      MYSQL_ROOT_PASSWORD: monomono
+      MYSQL_ROOT_PASSWORD: ${ROOT_PASSWORD}
     ports:
-      - 8080:80
+      - ${PHPMYADMIN_PORT}:80
     depends_on:
       - db
