@@ -1,8 +1,11 @@
-# El comando docker compose
+# Testing docker compose
 
-Intro
+This repository is a test environment in the creation of a yaml file to raise two containers.
 
-## Despliegue
+## Deployment
+
++ Creation of the yaml file
++ Run services
 
 ```bash
 docker compose up -d
